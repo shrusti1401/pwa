@@ -1,0 +1,40 @@
+{
+  "name": "Clothing Classifieds PWA",
+  "short_name": "Classifieds",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f0f2f5",
+  "theme_color": "#333333",
+  "description": "A PWA for showcasing clothing classifieds.",
+  "scope": ".",
+  "orientation": "portrait",
+  "categories": ["shopping", "clothing", "fashion"],
+  "icons": [
+    {
+      "src": "images/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/app-icon1.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshot1.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "label": "Homepage - Clothing Classifieds",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "images/screenshot2.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "label": "Grid View of Listings",
+      "form_factor": "wide"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clothing Classifieds</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#333" />
+
+  <!-- Favicon for PWA -->
+  <link rel="icon" href="images/app-icon.png" type="image/png" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .classifieds {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .card-price {
+      color: #28a745;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card-description {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Clothing Classifieds</h1>
+
+  <div class="classifieds" id="classifiedList"></div>
+
+  <script>
+    const clothes = [
+      {
+        name: "Men's Denim Jacket",
+        price: "₹45.00",
+        image: "https://via.placeholder.com/300x250?text=Denim+Jacket",
+        description: "Classic blue denim jacket, perfect for casual wear. Size M-L."
+      },
+      {
+        name: "Women's Summer Dress",
+        price: "₹35.00",
+        image: "https://via.placeholder.com/300x250?text=Summer+Dress",
+        description: "Floral summer dress, light and breathable. Size S-M."
+      },
+      {
+        name: "Unisex Hoodie",
+        price: "₹40.00",
+        image: "https://via.placeholder.com/300x250?text=Unisex+Hoodie",
+        description: "Comfortable cotton hoodie, various colors available. Size L."
+      },
+      {
+        name: "Men's Formal Shirt",
+        price: "₹30.00",
+        image: "https://via.placeholder.com/300x250?text=Formal+Shirt",
+        description: "White formal shirt, ideal for office wear. Size M."
+      },
+      {
+        name: "Women's Leather Jacket",
+        price: "₹85.00",
+        image: "https://via.placeholder.com/300x250?text=Leather+Jacket",
+        description: "Genuine leather, stylish and warm. Size M."
+      }
+    ];
+
+    const container = document.getElementById('classifiedList');
+
+    clothes.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" />
+        <div class="card-content">
+          <div class="card-title">${item.name}</div>
+          <div class="card-price">${item.price}</div>
+          <div class="card-description">${item.description}</div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('Service Worker registered!', reg))
+          .catch(err => console.log('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
